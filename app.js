@@ -16,7 +16,8 @@ app.use(bodyParser.raw());
 //--------------------------------------------------------
 // USERS
 //--------------------------------------------------------
-let users = require('./data/users.json');    // Initialize Users
+let usersD = require('./data/users.json');    // Initialize Users
+let users =  JSON.parse(JSON.stringify(usersD));
 
 // USERS - List all Users
 app.get('/listUsers', (req, res) => {
@@ -51,10 +52,13 @@ app.delete('/:id', function (req, res) {
 
 // USERS - Cancel Changes
 app.post('/cancel', function(req, res) {
-   fs.readFile(DATA_PATH + "users.json", (err, data) => {
-      if (err) throw err;
-      users = data;
-    });
+   //Object.assign(users, usersD);
+   users =  JSON.parse(JSON.stringify(usersD));
+
+   // fs.readFile(DATA_PATH + "users.json", (err, data) => {
+   //    if (err) throw err;
+   //    users = data;
+   //  });
    res.send("Changes Cancelled");
 })
 
