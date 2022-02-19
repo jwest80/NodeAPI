@@ -8,7 +8,7 @@ GET http://localhost:3000/2 HTTP/1.1
 content-type: application/json
 
 ### Add a User
-put http://localhost:3000/add HTTP/1.1
+post http://localhost:3000/add HTTP/1.1
 content-type: application/json
 
 {
@@ -19,17 +19,17 @@ content-type: application/json
 
 ### Deletes - User By Id
 ### Reurns - New List of Users
-DELETE  http://localhost:3000/2 HTTP/1.1
+DELETE  http://localhost:3000/3 HTTP/1.1
 content-type: application/json
 
 ### Cancel changes
-POST http://localhost:3000/cancel HTTP/1.1
+PUT http://localhost:3000/cancel HTTP/1.1
 content-type: application/json
 
 ### Saves changes to File
-POST http://localhost:3000/save HTTP/1.1
+PUT http://localhost:3000/save HTTP/1.1
 content-type: application/json
 
 ###  Restore user file from backup
-POST http://localhost:3000/restore HTTP/1.1
+PUT http://localhost:3000/restore HTTP/1.1
 content-type: application/json

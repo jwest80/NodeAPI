@@ -31,7 +31,7 @@ app.get('/:id', (req, res) => {
 })
 
 // USERS - Add a user
-app.put('/add', (req, res) => {
+app.post('/add', (req, res) => {
    let user = {
       id : Math.max(...users.map(user => user.id)) + 1,
       name : req.body.name,
@@ -51,7 +51,7 @@ app.delete('/:id', function (req, res) {
 })
 
 // USERS - Cancel Changes
-app.post('/cancel', function(req, res) {
+app.put('/cancel', function(req, res) {
    //Object.assign(users, usersD);
    users =  JSON.parse(JSON.stringify(usersD));
 
@@ -63,7 +63,7 @@ app.post('/cancel', function(req, res) {
 })
 
 // USERS - Save Changes to File
-app.post('/save', function(req, res) {
+app.put('/save', function(req, res) {
    fs.writeFile(DATA_PATH + "users.json", JSON.stringify(users, null, 2), function(err) {
       if (err) {
          return console.error(err);
@@ -73,7 +73,7 @@ app.post('/save', function(req, res) {
 })
 
 // USERS - Restore Users file from Backup (Initialize)
-app.post('/restore', function(req, res) {
+app.put('/restore', function(req, res) {
    // Create a readable stream
    var readerStream = fs.createReadStream(DATA_PATH + 'users-backup.json');
 
